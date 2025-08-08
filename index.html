@@ -22,7 +22,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 800px; /* Tăng chiều rộng để chứa nhiều nút hơn */
+            max-width: 800px; 
             width: 100%;
         }
         h1 {
@@ -36,8 +36,8 @@
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
-            gap: 15px; /* Khoảng cách giữa các nút Part */
-            flex-wrap: wrap; /* Cho phép các nút xuống dòng nếu màn hình nhỏ */
+            gap: 15px; 
+            flex-wrap: wrap; 
         }
         .part-buttons button {
             background-color: #007bff;
@@ -49,54 +49,51 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            min-width: 100px; /* Đảm bảo nút có chiều rộng tối thiểu */
+            min-width: 100px; 
         }
         .part-buttons button:hover {
             background-color: #0056b3;
             transform: translateY(-2px);
         }
         .part-buttons button.active {
-            background-color: #004085; /* Màu đậm hơn cho nút Part đang active */
+            background-color: #004085; 
             border: 2px solid #002752;
             transform: translateY(0);
         }
-
         .test-group {
-            display: none; /* Mặc định ẩn tất cả các nhóm test */
+            display: none; 
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px dashed #eee;
         }
         .test-group.active {
-            display: block; /* Hiện nhóm test đang active */
+            display: block; 
         }
-
         .test-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex; /* Dùng flexbox để sắp xếp các bài test */
-            flex-wrap: wrap; /* Cho phép xuống dòng */
-            justify-content: center; /* Căn giữa các bài test */
-            gap: 10px; /* Khoảng cách giữa các test */
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 10px; 
         }
         .test-list li {
-            flex: 0 0 calc(50% - 10px); /* Mỗi hàng 2 test trên màn hình lớn */
+            flex: 0 0 calc(50% - 10px); 
             max-width: calc(50% - 10px);
-            margin-bottom: 10px; /* Khoảng cách dưới mỗi item */
+            margin-bottom: 10px; 
         }
-        /* Điều chỉnh cho màn hình nhỏ hơn */
+        
         @media (max-width: 600px) {
             .test-list li {
-                flex: 0 0 100%; /* Mỗi hàng 1 test trên màn hình nhỏ */
+                flex: 0 0 100%; 
                 max-width: 100%;
             }
         }
-
         .test-list li a {
             display: block;
             padding: 12px 20px;
-            background-color: #28a745; /* Màu xanh lá cây cho các nút test */
+            background-color: #28a745; 
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -121,33 +118,29 @@
 <body>
     <div class="container">
         <h1>Select Your English Test</h1>
-
         <div class="part-buttons">
             <button id="showPart2" onclick="showTestGroup('part12Tests', this)">PART 1-2</button>
             <button id="showPart3" onclick="showTestGroup('part34Tests', this)">PART 3-4</button>
         </div>
-
         <div id="part12Tests" class="test-group active">
             <ul class="test-list">
-                <li><a href="src/test_1.html">Test 01</a></li>
-                <li><a href="src/test_2.html">Test 02</a></li>
-                <li><a href="src/test_3.html">Test 03</a></li>
-                <li><a href="src/test_4.html">Test 04</a></li>
-                <li><a href="src/test_5.html">Test 05</a></li>
-                <li><a href="src/test_6.html">Test 06</a></li>
-                <li><a href="src/test_7.html">Test 07</a></li>
-                <li><a href="src/test_8.html">Test 08</a></li>
-                <li><a href="src/test_9.html">Test 09</a></li>
-                <li><a href="src/test_10.html">Test 10</a></li>
-                <li><a href="src/test_11.html">Test 11</a></li>
-                <li><a href="src/test_12.html">Test 12</a></li>
-                <li><a href="src/test_13.html">Test 13</a></li>
-                <li><a href="src/test_14.html">Test 14</a></li>
-                <li><a href="src/test_15.html">Test 15</a></li>
+                <li><a href="src/test.html?test-id=1">Test 01</a></li>
+                <li><a href="src/test.html?test-id=2">Test 02</a></li>
+                <li><a href="src/test.html?test-id=3">Test 03</a></li>
+                <li><a href="src/test.html?test-id=4">Test 04</a></li>
+                <li><a href="src/test.html?test-id=5">Test 05</a></li>
+                <li><a href="src/test.html?test-id=6">Test 06</a></li>
+                <li><a href="src/test.html?test-id=7">Test 07</a></li>
+                <li><a href="src/test.html?test-id=8">Test 08</a></li>
+                <li><a href="src/test.html?test-id=9">Test 09</a></li>
+                <li><a href="src/test.html?test-id=10">Test 10</a></li>
+                <li><a href="src/test.html?test-id=11">Test 11</a></li>
+                <li><a href="src/test.html?test-id=12">Test 12</a></li>
+                <li><a href="src/test.html?test-id=13">Test 13</a></li>
+                <li><a href="src/test.html?test-id=14">Test 14</a></li>
+                <li><a href="src/test.html?test-id=15">Test 15</a></li>
             </ul>
         </div>
-
-
         <div id="part34Tests" class="test-group">
             <ul class="test-list">
                 <li><a href="src/test_1.html">Test 11</a></li>
@@ -157,37 +150,29 @@
                 <li><a href="src/test_5.html">Test 15</a></li>
             </ul>
         </div>
-
-
         <div class="note">
             Select a Part, then choose a test to start practicing!
         </div>
     </div>
-
     <script>
         function showTestGroup(groupId, clickedButton) {
-            // Ẩn tất cả các nhóm test
+            
             document.querySelectorAll('.test-group').forEach(group => {
                 group.classList.remove('active');
             });
-
-            // Gỡ bỏ class 'active' khỏi tất cả các nút Part
+            
             document.querySelectorAll('.part-buttons button').forEach(button => {
                 button.classList.remove('active');
             });
-
-            // Hiện nhóm test được chọn
+            
             document.getElementById(groupId).classList.add('active');
-
-            // Thêm class 'active' cho nút vừa được click
+            
             if (clickedButton) {
                 clickedButton.classList.add('active');
             }
         }
-
-        // Khởi tạo: Hiển thị nhóm test của PART 1 khi tải trang
+        
         document.addEventListener('DOMContentLoaded', () => {
-            // Giả lập click vào nút "PART 1" để nó active và hiển thị nhóm test tương ứng
             const initialButton = document.getElementById('showPart1');
             if (initialButton) {
                 showTestGroup('part12Tests', initialButton);

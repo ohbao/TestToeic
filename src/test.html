@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Listening Test Helper</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="data.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>English Listening Test</h1>
+        <div class="test-navigation">
+            <button style="background-color:#ffffff; transform: rotateY(180deg); " id="backTestBtn" onclick="goToPreviousTest()"><img style="height: 100%;" src="../images/arrows/icons8-arrow-50.png" alt="Back"></button>
+            <button style="background-color:#ffffff;" id="nextTestBtn" onclick="goToNextTest()"><img style="height: 100%;" src="../images/arrows/icons8-arrow-50.png" alt="Next"></button>
+        </div>
+
+        <div class="audio-player">
+            <h3>Test 1</h3>
+            <audio controls style="width: 80%;">
+                <source type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="action-buttons">
+            <button id="showPart1Btn" onclick="showPart('part1Content', 'showPart1Btn')" class="active">Part 1</button>
+            <button id="showPart2Btn" onclick="showPart('part2Content', 'showPart2Btn')">Part 2</button>
+            <button id="submitButton" type="button" onclick="showAnswers()">Show My Answers & Score</button>
+        </div>
+
+        <form id="testForm">
+            <div id="part1Content" class="part-content active">
+                <h2>Part 1</h2>
+                <div class="question-block">
+                    <strong>01.</strong>
+                    <img id="img1-id" alt="Hình ảnh câu 1" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q01" value="A"> (A) </label>
+                        <label><input type="radio" name="q01" value="B"> (B) </label>
+                        <label><input type="radio" name="q01" value="C"> (C) </label>
+                        <label><input type="radio" name="q01" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>02.</strong>
+                    <img id="img2-id" alt="Hình ảnh câu 2" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q02" value="A"> (A) </label>
+                        <label><input type="radio" name="q02" value="B"> (B) </label>
+                        <label><input type="radio" name="q02" value="C"> (C) </label>
+                        <label><input type="radio" name="q02" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>03.</strong>
+                    <img id="img3-id" alt="Hình ảnh câu 3" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q03" value="A"> (A) </label>
+                        <label><input type="radio" name="q03" value="B"> (B) </label>
+                        <label><input type="radio" name="q03" value="C"> (C) </label>
+                        <label><input type="radio" name="q03" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>04.</strong>
+                    <img id="img4-id" alt="Hình ảnh câu 4" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q04" value="A"> (A) </label>
+                        <label><input type="radio" name="q04" value="B"> (B) </label>
+                        <label><input type="radio" name="q04" value="C"> (C) </label>
+                        <label><input type="radio" name="q04" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>05.</strong>
+                    <img id="img5-id" alt="Hình ảnh câu 5" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q05" value="A"> (A) </label>
+                        <label><input type="radio" name="q05" value="B"> (B) </label>
+                        <label><input type="radio" name="q05" value="C"> (C) </label>
+                        <label><input type="radio" name="q05" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>06.</strong>
+                    <img id="img6-id" alt="Hình ảnh câu 6" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q06" value="A"> (A) </label>
+                        <label><input type="radio" name="q06" value="B"> (B) </label>
+                        <label><input type="radio" name="q06" value="C"> (C) </label>
+                        <label><input type="radio" name="q06" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>07.</strong>
+                    <img id="img7-id" alt="Hình ảnh câu 7" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q07" value="A"> (A) </label>
+                        <label><input type="radio" name="q07" value="B"> (B) </label>
+                        <label><input type="radio" name="q07" value="C"> (C) </label>
+                        <label><input type="radio" name="q07" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>08.</strong>
+                    <img id="img8-id" alt="Hình ảnh câu 8" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q08" value="A"> (A) </label>
+                        <label><input type="radio" name="q08" value="B"> (B) </label>
+                        <label><input type="radio" name="q08" value="C"> (C) </label>
+                        <label><input type="radio" name="q08" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>09.</strong>
+                    <img id="img9-id" alt="Hình ảnh câu 9" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q09" value="A"> (A) </label>
+                        <label><input type="radio" name="q09" value="B"> (B) </label>
+                        <label><input type="radio" name="q09" value="C"> (C) </label>
+                        <label><input type="radio" name="q09" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>10.</strong>
+                    <img id="img10-id" alt="Hình ảnh câu 10" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="A"> (A) </label>
+                        <label><input type="radio" name="q10" value="B"> (B) </label>
+                        <label><input type="radio" name="q10" value="C"> (C) </label>
+                        <label><input type="radio" name="q10" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="part-navigation">
+                    <button type="button"  onclick="showPart('part2Content', 'showPart2Btn')">Next Part </button>
+                </div>
+            </div>
+            <div id="part2Content" class="part-content">
+                <h2>Part 2</h2>
+                <div class="question-block">
+                    <strong>11.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="A"> (A) </label>
+                        <label><input type="radio" name="q11" value="B"> (B) </label>
+                        <label><input type="radio" name="q11" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>12.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="A"> (A) </label>
+                        <label><input type="radio" name="q12" value="B"> (B) </label>
+                        <label><input type="radio" name="q12" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>13.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="A"> (A) </label>
+                        <label><input type="radio" name="q13" value="B"> (B) </label>
+                        <label><input type="radio" name="q13" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>14.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="A"> (A) </label>
+                        <label><input type="radio" name="q14" value="B"> (B) </label>
+                        <label><input type="radio" name="q14" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>15.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="A"> (A) </label>
+                        <label><input type="radio" name="q15" value="B"> (B) </label>
+                        <label><input type="radio" name="q15" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>16.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="A"> (A) </label>
+                        <label><input type="radio" name="q16" value="B"> (B) </label>
+                        <label><input type="radio" name="q16" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>17.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="A"> (A) </label>
+                        <label><input type="radio" name="q17" value="B"> (B) </label>
+                        <label><input type="radio" name="q17" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>18.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="A"> (A) </label>
+                        <label><input type="radio" name="q18" value="B"> (B) </label>
+                        <label><input type="radio" name="q18" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>19.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="A"> (A) </label>
+                        <label><input type="radio" name="q19" value="B"> (B) </label>
+                        <label><input type="radio" name="q19" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>20.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="A"> (A) </label>
+                        <label><input type="radio" name="q20" value="B"> (B) </label>
+                        <label><input type="radio" name="q20" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>21.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="A"> (A) </label>
+                        <label><input type="radio" name="q21" value="B"> (B) </label>
+                        <label><input type="radio" name="q21" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>22.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="A"> (A) </label>
+                        <label><input type="radio" name="q22" value="B"> (B) </label>
+                        <label><input type="radio" name="q22" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>23.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="A"> (A) </label>
+                        <label><input type="radio" name="q23" value="B"> (B) </label>
+                        <label><input type="radio" name="q23" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>24.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="A"> (A) </label>
+                        <label><input type="radio" name="q24" value="B"> (B) </label>
+                        <label><input type="radio" name="q24" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>25.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="A"> (A) </label>
+                        <label><input type="radio" name="q25" value="B"> (B) </label>
+                        <label><input type="radio" name="q25" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>26.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q26" value="A"> (A) </label>
+                        <label><input type="radio" name="q26" value="B"> (B) </label>
+                        <label><input type="radio" name="q26" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>27.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q27" value="A"> (A) </label>
+                        <label><input type="radio" name="q27" value="B"> (B) </label>
+                        <label><input type="radio" name="q27" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>28.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q28" value="A"> (A) </label>
+                        <label><input type="radio" name="q28" value="B"> (B) </label>
+                        <label><input type="radio" name="q28" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>29.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q29" value="A"> (A) </label>
+                        <label><input type="radio" name="q29" value="B"> (B) </label>
+                        <label><input type="radio" name="q29" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>30.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q30" value="A"> (A) </label>
+                        <label><input type="radio" name="q30" value="B"> (B) </label>
+                        <label><input type="radio" name="q30" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>31.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q31" value="A"> (A) </label>
+                        <label><input type="radio" name="q31" value="B"> (B) </label>
+                        <label><input type="radio" name="q31" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>32.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q32" value="A"> (A) </label>
+                        <label><input type="radio" name="q32" value="B"> (B) </label>
+                        <label><input type="radio" name="q32" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>33.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q33" value="A"> (A) </label>
+                        <label><input type="radio" name="q33" value="B"> (B) </label>
+                        <label><input type="radio" name="q33" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>34.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q34" value="A"> (A) </label>
+                        <label><input type="radio" name="q34" value="B"> (B) </label>
+                        <label><input type="radio" name="q34" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>35.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q35" value="A"> (A) </label>
+                        <label><input type="radio" name="q35" value="B"> (B) </label>
+                        <label><input type="radio" name="q35" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>36.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q36" value="A"> (A) </label>
+                        <label><input type="radio" name="q36" value="B"> (B) </label>
+                        <label><input type="radio" name="q36" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>37.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q37" value="A"> (A) </label>
+                        <label><input type="radio" name="q37" value="B"> (B) </label>
+                        <label><input type="radio" name="q37" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>38.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q38" value="A"> (A) </label>
+                        <label><input type="radio" name="q38" value="B"> (B) </label>
+                        <label><input type="radio" name="q38" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>39.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q39" value="A"> (A) </label>
+                        <label><input type="radio" name="q39" value="B"> (B) </label>
+                        <label><input type="radio" name="q39" value="C"> (C) </label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <strong>40.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q40" value="A"> (A) </label>
+                        <label><input type="radio" name="q40" value="B"> (B) </label>
+                        <label><input type="radio" name="q40" value="C"> (C) </label>
+                    </div>
+                </div>
+            </div> 
+        </form>
+
+        <div id="results">
+            <h3>Your Test Results:</h3>
+            <div id="scoreDisplay" class="score"></div>
+            <ul id="answerList"></ul>
+        </div>
+
+
+    </div>
+
+    <footer class="footer">
+        <p>Design by Bao-Ong</p>
+    </footer>
+
+  <script>
+        // Define correct answers here based on the provided answer key
+        let correctAnswers = {};
+
+        // Function to show/hide parts of the test
+        function showPart(partId, activeBtnId) { // Changed parameter name from clickedButton to activeBtnId
+            // Hide all part contents
+            document.querySelectorAll('.part-content').forEach(part => {
+                part.classList.remove('active');
+            });
+
+            // Deactivate all part buttons
+            document.querySelectorAll('.action-buttons button').forEach(button => {
+                button.classList.remove('active');
+            });
+            // Ensure the submit button doesn't lose its background color
+            // document.getElementById('submitButton').style.backgroundColor = '#28a745';
+
+            // Show the selected part
+            console.log("class partId: ", partId);
+            console.log("activeBtnId: ", activeBtnId);
+
+            console.log("class name: ", document.getElementById(partId).className);
+            document.getElementById(partId).classList.add('active');
+
+            // Activate the corresponding button
+            if (activeBtnId) {
+                const buttonToActivate = document.getElementById(activeBtnId);
+                console.log(`Activating button: ${activeBtnId}`); // Debugging log
+                console.log(`buttonToActivate button: ${buttonToActivate}`); // Debugging log
+                if (buttonToActivate) {
+                    buttonToActivate.classList.add('active');
+                }
+            }
+
+            // Hide results when changing parts
+            document.getElementById('results').style.display = 'none';
+
+            // Scroll to the top of the container when changing parts
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        }
+        // Function to show/score answers (existing logic)
+        function showAnswers() {
+            const form = document.getElementById('testForm');
+            const answerList = document.getElementById('answerList');
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            answerList.innerHTML = ''; // Clear previous results
+            let correctCount = 0;
+
+            // Array of all question names (Important: includes all questions from both parts)
+            const questions = [
+                'q01', 'q02', 'q03', 'q04', 'q05', 'q06', 'q07',
+                'q08', 'q09', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15',
+                'q16', 'q17', 'q18', 'q19', 'q20', 'q21', 'q22', 'q23',
+                'q24', 'q25', 'q26', 'q27', 'q28', 'q29', 'q30', 'q31',
+                'q32', 'q33', 'q34', 'q35', 'q36', 'q37', 'q38', 'q39', 'q40'
+            ];
+
+            questions.forEach(qName => {
+                const selectedOption = form.elements[qName] ? form.elements[qName].value : '';
+                const correctAnswer = correctAnswers[qName];
+                const listItem = document.createElement('li');
+                let questionNumber = qName.replace('q', '');
+                // Pad with leading zero if single digit for consistent display
+                if (questionNumber.length === 1) {
+                    questionNumber = '0' + questionNumber;
+                }
+
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct-answer');
+                    listItem.textContent = `Question ${questionNumber}: Your Answer - ${selectedOption} (Correct!)`;
+                    correctCount++;
+                } else {
+                    listItem.classList.add('wrong-answer');
+                    listItem.textContent = `Question ${questionNumber}: Your Answer - ${selectedOption || 'Not answered'} (Correct Answer: ${correctAnswer})`;
+                }
+                answerList.appendChild(listItem);
+            });
+
+            scoreDisplay.textContent = `You got ${correctCount} out of ${questions.length} questions correct!`;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize: Show Part 1 when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            showPart('part1Content', 'showPart1Btn'); //
+            const urlParams = new URLSearchParams(window.location.search);
+            const testId = urlParams.get('test-id');
+
+            correctAnswers = datatAnswers[testId];
+            console.log("Correct Answers: ", correctAnswers);
+            loadTest(testId);
+        });
+    </script>
+</body>
+</html>
