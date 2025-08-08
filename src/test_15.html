@@ -175,8 +175,8 @@
         </div>
 
         <div class="action-buttons">
-            <button id="showPart1Btn" onclick="showPart('part1Content', this)" class="active">Part 1</button>
-            <button id="showPart2Btn" onclick="showPart('part2Content', this)">Part 2</button>
+            <button id="showPart1Btn" onclick="showPart('part1Content', 'showPart1Btn')" class="active">Part 1</button>
+            <button id="showPart2Btn" onclick="showPart('part2Content', 'showPart2Btn')">Part 2</button>
             <button id="submitButton" type="button" onclick="showAnswers()">Show My Answers & Score</button>
         </div>
 
@@ -577,9 +577,7 @@
             <ul id="answerList"></ul>
         </div>
 
-        <div class="note">
-            **Note:** This file is a simple HTML-based tool. It's merely a convenient way for you to record, review, and self-check your choices as you go through the test.
-        </div>
+
     </div>
 
     <footer class="footer">
@@ -618,9 +616,10 @@
 
             console.log("class name: ", document.getElementById(partId).className);
             document.getElementById(partId).classList.add('active');
-
+            
             // Activate the corresponding button
             if (activeBtnId) {
+                //document.getElementById(activeBtnId).style.backgroundColor = '#004085';
                 const buttonToActivate = document.getElementById(activeBtnId);
                 console.log(`Activating button: ${activeBtnId}`); // Debugging log
                 console.log(`buttonToActivate button: ${buttonToActivate}`); // Debugging log
