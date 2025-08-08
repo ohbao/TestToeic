@@ -1,2 +1,2 @@
 # TestToeic
-only testing
+open index.html by any browser
