@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Listening Test Helper</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.js"></script>
+    <script src="script.js"></script>
+    <script src="data.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>English Listening Test</h1>
+        <div class="test-navigation">
+            <button style="background-color:#ffffff; transform: rotateY(180deg); " id="backTestBtn" onclick="goToPreviousTest()"><img style="height: 100%;" src="../images/arrows/icons8-arrow-50.png" alt="Back"></button>
+            <button style="background-color:#ffffff;" id="nextTestBtn" onclick="goToNextTest()"><img style="height: 100%;" src="../images/arrows/icons8-arrow-50.png" alt="Next"></button>
+        </div>
+
+        <div class="audio-player">
+            <h3>Test 1</h3>
+            <audio controls style="width: 80%;">
+                <source type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="action-buttons">
+            <button id="showPart3Btn" onclick="showPart('part1Content', 'showPart3Btn')" class="active">Part 3</button>
+            <button id="showPart4Btn" onclick="showPart('part2Content', 'showPart4Btn')">Part 4</button>
+            <button id="submitButton" type="button" onclick="showAnswers()">Show My Answers & Score</button>
+        </div>
+
+        <form id="testForm">
+            <div id="pdf-viewer-container"></div>
+            <div id="part1Content" class="part-content active">
+                <h2>Part 1</h2>
+                <div class="question-block">
+                    <strong>01.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q01" value="A"> (A) </label>
+                        <label><input type="radio" name="q01" value="B"> (B) </label>
+                        <label><input type="radio" name="q01" value="C"> (C) </label>
+                        <label><input type="radio" name="q01" value="D"> (D) </label>
+                    </div>
+                </div>
+
+                <div class="part-navigation">
+                    <button type="button"  onclick="showPart('part2Content', 'showPart4Btn')">Next Part </button>
+                </div>
+            </div>
+            <div id="part2Content" class="part-content">
+                <h2>Part 2</h2>
+                <div class="question-block">
+                    <strong>11.</strong>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="A"> (A) </label>
+                        <label><input type="radio" name="q11" value="B"> (B) </label>
+                        <label><input type="radio" name="q11" value="C"> (C) </label>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+
+        <div id="results">
+            <h3>Your Test Results:</h3>
+            <div id="scoreDisplay" class="score"></div>
+            <ul id="answerList"></ul>
+        </div>
+
+
+    </div>
+
+    <footer class="footer">
+        <p>Design by Bao-Ong</p>
+    </footer>
+
+    <script type="module">
+        import * as pdfjsLib from "https://unpkg.com/pdfjs-dist@5.4.54/build/pdf.mjs";
+        pdfjsLib.GlobalWorkerOptions.workerSrc = "https://unpkg.com/pdfjs-dist@5.4.54/build/pdf.worker.mjs";
+
+        // Define correct answers here based on the provided answer key
+        let correctAnswers = {};
+
+        // Function to show/hide parts of the test
+        function showPart(partId, activeBtnId) { // Changed parameter name from clickedButton to activeBtnId
+            // Hide all part contents
+            document.querySelectorAll('.part-content').forEach(part => {
+                part.classList.remove('active');
+            });
+
+            // Deactivate all part buttons
+            document.querySelectorAll('.action-buttons button').forEach(button => {
+                button.classList.remove('active');
+            });
+            // Ensure the submit button doesn't lose its background color
+            // document.getElementById('submitButton').style.backgroundColor = '#28a745';
+
+            // Show the selected part
+            console.log("class partId: ", partId);
+            console.log("activeBtnId: ", activeBtnId);
+
+            console.log("class name: ", document.getElementById(partId).className);
+            document.getElementById(partId).classList.add('active');
+
+            // Activate the corresponding button
+            if (activeBtnId) {
+                const buttonToActivate = document.getElementById(activeBtnId);
+                console.log(`Activating button: ${activeBtnId}`); // Debugging log
+                console.log(`buttonToActivate button: ${buttonToActivate}`); // Debugging log
+                if (buttonToActivate) {
+                    buttonToActivate.classList.add('active');
+                }
+            }
+
+            // Hide results when changing parts
+            document.getElementById('results').style.display = 'none';
+
+            // Scroll to the top of the container when changing parts
+            document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+        }
+        // Function to show/score answers (existing logic)
+        function showAnswers() {
+            const form = document.getElementById('testForm');
+            const answerList = document.getElementById('answerList');
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            answerList.innerHTML = ''; // Clear previous results
+            let correctCount = 0;
+
+            // Array of all question names (Important: includes all questions from both parts)
+            const questions = [
+                'q01', 'q02', 'q03', 'q04', 'q05', 'q06', 'q07',
+                'q08', 'q09', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15',
+                'q16', 'q17', 'q18', 'q19', 'q20', 'q21', 'q22', 'q23',
+                'q24', 'q25', 'q26', 'q27', 'q28', 'q29', 'q30', 'q31',
+                'q32', 'q33', 'q34', 'q35', 'q36', 'q37', 'q38', 'q39', 'q40'
+            ];
+
+            questions.forEach(qName => {
+                const selectedOption = form.elements[qName] ? form.elements[qName].value : '';
+                const correctAnswer = correctAnswers[qName];
+                const listItem = document.createElement('li');
+                let questionNumber = qName.replace('q', '');
+                // Pad with leading zero if single digit for consistent display
+                if (questionNumber.length === 1) {
+                    questionNumber = '0' + questionNumber;
+                }
+
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct-answer');
+                    listItem.textContent = `Question ${questionNumber}: Your Answer - ${selectedOption} (Correct!)`;
+                    correctCount++;
+                } else {
+                    listItem.classList.add('wrong-answer');
+                    listItem.textContent = `Question ${questionNumber}: Your Answer - ${selectedOption || 'Not answered'} (Correct Answer: ${correctAnswer})`;
+                }
+                answerList.appendChild(listItem);
+            });
+
+            scoreDisplay.textContent = `You got ${correctCount} out of ${questions.length} questions correct!`;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize: Show Part 1 when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            showPart('part1Content', 'showPart3Btn'); //
+            const urlParams = new URLSearchParams(window.location.search);
+            const testId = urlParams.get('test-id');
+
+            correctAnswers = datatAnswers[testId];
+            console.log("Correct Answers: ", correctAnswers);
+            loadTest(testId);
+            loadPdf()
+        });
+    </script>
+</body>
+</html>

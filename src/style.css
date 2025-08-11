@@ -154,3 +154,11 @@ h1, h2 {
 .part-content.active {
     display: block; /* Show active part */
 }
+
+
+#pdf-viewer-container {
+    height: 600px; 
+    overflow-y: auto; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+}

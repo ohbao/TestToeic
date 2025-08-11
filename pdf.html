@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PDF.js Example</title>
+<style>
+  body { font-family: sans-serif; margin: 0; padding: 0; }
+  #pdf-viewer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  canvas {
+    border: 1px solid #ccc;
+  }
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">PDF.js Viewer</h2>
+<div id="pdf-viewer-container"></div>
+
+<!-- 2. Configure worker -->
+<script  type="module">
+    import * as pdfjsLib from "https://unpkg.com/pdfjs-dist@5.4.54/build/pdf.mjs";
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://unpkg.com/pdfjs-dist@5.4.54/build/pdf.worker.mjs";
+
+    (async () => {
+        const container = document.getElementById('pdf-viewer-container');
+        container.innerHTML = ''; 
+
+        // Đường dẫn tới PDF (đổi tùy theo vị trí file)
+        const pdfUrl = '../book/tomato.pdf';
+        const startPage = 10;
+        const endPage = 20;
+
+        try {
+            const pdf = await pdfjsLib.getDocument({
+                                                    url: pdfUrl,
+                                                    password: "toeicbookstore"}).promise;
+
+                                      
+            const totalPages = pdf.numPages;
+            const safeEnd = Math.min(endPage, totalPages);
+
+            for (let i = startPage; i <= safeEnd; i++) {
+                const page = await pdf.getPage(i);
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale });
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                container.appendChild(canvas);
+                await page.render({ canvasContext: context, viewport }).promise;
+            }
+        } catch (error) {
+            console.error('Error: ', error);
+            container.textContent = 'Error loading PDF document.';
+        }
+    })();
+</script>
+
+</body>
+</html>
